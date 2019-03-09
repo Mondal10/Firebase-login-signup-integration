@@ -1,0 +1,142 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./assets/images/fav-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Firebase_login_signup</title>
+</head>
+
+<body class="blue lighten-4">
+    <!-- NAVBAR -->
+    <nav class="z-depth-0 blue lighten-2">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">
+                <!-- Paste the source of your logo img in src field -->
+                <img src="./assets/images/dummy-logo.png" style="width: 140px; margin-top: 10px;">
+            </a>
+            <a href="#" data-target="mobile-navbar-view" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li class="logged-in" style="display:none;">
+                    <a href="#" class="teal-text modal-trigger" data-target="modal-account">Account</a>
+                </li>
+                <li class="logged-in" style="display:none;">
+                    <a href="#" class="teal-text" id="logout">Logout</a>
+                </li>
+                <li class="logged-out" style="display:none;">
+                    <a href="#" class="white-text modal-trigger" data-target="modal-login">Login</a>
+                </li>
+                <li class="logged-out" style="display:none;">
+                    <a href="#" class="white-text modal-trigger" data-target="modal-signup">Sign up</a>
+                </li>
+            </ul>
+            <!-- For Mobile view -->
+            <ul class="sidenav blue lighten-2" id="mobile-navbar-view">
+                <li class="logged-in" style="display:none;">
+                    <a href="#" class="teal-text modal-trigger" data-target="modal-account">Account</a>
+                </li>
+                <li class="logged-in" style="display:none;">
+                    <a href="#" class="teal-text" id="logout">Logout</a>
+                </li>
+                <li class="logged-out" style="display:none;">
+                    <a href="#" class="white-text modal-trigger" data-target="modal-login">Login</a>
+                </li>
+                <li class="logged-out" style="display:none;">
+                    <a href="#" class="white-text modal-trigger" data-target="modal-signup">Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content">
+            <h4>Sign up</h4>
+            <br />
+            <form id="signup-form">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="first_name" type="text" class="validate" pattern="[A-Za-z]{3,}" title="Please Enter Correct First Name (No special characters allowed)"
+                            required />
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" type="text" class="validate" pattern="[A-Za-z]{3,}" title="Please Enter Correct Last Name (No special characters allowed)"
+                            required />
+                        <label for="last_name">Last Name</label>
+                    </div>
+                </div>
+                <div class="input-field">
+                    <input type="email" id="signup-email" class="validate" required />
+                    <label for="signup-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-password" class="validate" autocomplete="off" required />
+                    <label for="signup-password">Choose password</label>
+                </div>
+                <div id="signupMsgDiv" style="color: crimson; margin: 10px 0px;"></div>
+                <button class="btn brown darken-2 z-depth-0">Sign up</button>
+            </form>
+            <h6>Sign Up with Another Account:</h6>
+            <br />
+            <div class="otherAccount" style="text-align:center;">
+                <button id="google-signup" class="btn brown darken-2 z-depth-0 otherAccountBtn"><i class="material-icons left"
+                        style="margin: 2px 5px; pointer-events: none;"><img src="./assets/images/GoogleIcon.png" height="30px"
+                            widht="30px" alt="GoogleIcon"></i>Google</button>
+                <button id="facebook-signup" class="btn brown darken-2 z-depth-0 otherAccountBtn"><i class="material-icons left"
+                        style="margin: 2px 5px; pointer-events: none;"><img src="./assets/images/FacebookIcon.png"
+                            height="30px" widht="30px" alt="FacebookIcon"></i>Facebook</button>
+            </div>
+        </div>
+    </div>
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal">
+        <div class="modal-content">
+            <h4>Login</h4>
+            <br />
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" class="validate" required />
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" class="validate" autocomplete="off" required />
+                    <label for="login-password">Your password</label>
+                </div>
+                <div id="loginMsgDiv" style="color: crimson; margin: 10px 0px;"></div>
+                <button class="btn brown darken-2 z-depth-0">Login</button>
+                <!-- <button class="waves-effect waves-light btn"><i class="material-icons left"><img src="./assets/images/GoogleIcon.png" alt="GoogleIcon"></i>Google</button> -->
+            </form>
+            <h6>Log In with Another Account:</h6>
+            <br />
+            <div class="otherAccount" style="text-align:center;">
+                <button id="google-login" class="btn brown darken-2 z-depth-0 otherAccountBtn"><i class="material-icons left"
+                        style="margin: 2px 5px; pointer-events: none;"><img src="./assets/images/GoogleIcon.png" height="30px"
+                            widht="30px" alt="GoogleIcon"></i>Google</button>
+                <button id="facebook-login" class="btn brown darken-2 z-depth-0 otherAccountBtn"><i class="material-icons left"
+                        style="margin: 2px 5px; pointer-events: none;"><img src="./assets/images/FacebookIcon.png"
+                            height="30px" widht="30px" alt="FacebookIcon"></i>Facebook</button>
+            </div>
+        </div>
+    </div>
+    <!-- ACCOUNT MODAL -->
+    <div id="modal-account" class="modal">
+        <div class="modal-content center-align">
+            <h4>Account Details</h4>
+            <br />
+            <div class="account-details"></div>
+        </div>
+    </div>
+    <!-- Load all scripts here -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-firestore.js"></script>
+    <script src="./assets/scripts/api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./assets/scripts/main.js"></script>
+    <script src="./assets/scripts/authentication.js"></script>
+</body>
+
+</html>
